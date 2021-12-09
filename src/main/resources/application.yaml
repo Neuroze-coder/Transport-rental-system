@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/system_city_transport_database
+    username: postgres
+    password: ZALMANz3plus
