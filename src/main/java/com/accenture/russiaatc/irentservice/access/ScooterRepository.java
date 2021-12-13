@@ -1,4 +1,7 @@
 package com.accenture.russiaatc.irentservice.access;
 
-public interface ScooterRepository {
+import com.accenture.russiaatc.irentservice.model.entity.Scooter;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ScooterRepository extends JpaRepository <Scooter, Long> {
 }

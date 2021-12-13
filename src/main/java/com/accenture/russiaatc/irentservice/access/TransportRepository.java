@@ -1,4 +1,7 @@
 package com.accenture.russiaatc.irentservice.access;
 
-public interface TransportRepository {
+import com.accenture.russiaatc.irentservice.model.entity.Transport;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TransportRepository extends JpaRepository <Transport, Long> {
 }

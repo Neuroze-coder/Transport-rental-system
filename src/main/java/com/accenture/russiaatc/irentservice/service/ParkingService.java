@@ -12,9 +12,9 @@ public interface ParkingService {
 
     ParkingDto saveParking (ParkingDto parkingDto);
 
-    void deleteParking (Integer id);
+    void deleteParking (Long id);
 
-    ParkingDto findById (Integer id);
+    ParkingDto findById (Long id);
 
     List<ParkingDto> findAll();
 

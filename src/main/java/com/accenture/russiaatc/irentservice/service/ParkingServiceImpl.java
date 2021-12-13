@@ -41,13 +41,13 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     @Override
-    public void deleteParking(Integer id) {
+    public void deleteParking(Long id) {
         parkingRepository.deleteById(id);
 
     }
 
     @Override
-    public ParkingDto findById(Integer id) {
+    public ParkingDto findById(Long id) {
         return parkingConverter.map(parkingRepository.findById(id).orElseThrow());
     }
 

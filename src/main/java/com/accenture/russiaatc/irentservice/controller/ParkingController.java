@@ -19,7 +19,7 @@ public class ParkingController {
     }
 
     @GetMapping("/{id}")
-    public ParkingDto getParking (@PathVariable Integer id) {
+    public ParkingDto getParking (@PathVariable Long id) {
         return parkingService.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class ParkingController {
 
     @DeleteMapping
     public void deleteParking (@RequestBody ParkingDto parkingDto ) {
-        parkingService.deleteParking(Math.toIntExact(parkingDto.getId()));
+        parkingService.deleteParking(parkingDto.getId());
     }
 
 }

@@ -1,8 +1,8 @@
 package com.accenture.russiaatc.irentservice.model.entity;
 
 
+import com.accenture.russiaatc.irentservice.model.entity.enums.TransportState;
 import com.accenture.russiaatc.irentservice.model.entity.enums.TypeCondition;
-import com.accenture.russiaatc.irentservice.model.entity.enums.TypeTransport;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,18 +23,23 @@ public class Transport {
     @SequenceGenerator(name = "seq_cust", sequenceName = "seq_cust", allocationSize = 1)
     private Long id;
 
-    @OneToOne
-    private Parking parking;
-
     @Column (name = "condition")
     @Enumerated(EnumType.STRING)
     private TypeCondition typeCondition;
 
-    @Column (name = "type")
+    @ManyToOne
+    @JoinColumn (name = "type_id")
+    private TransportType type;
+
+    @ManyToOne
+    @JoinColumn (name = "parking_id")
+    private Parking parking;
+
+    @Column (name = "serial")
+    private String serial;
+
     @Enumerated(EnumType.STRING)
-    private TypeTransport typeTransport;
-
-
+    private TransportState state;
 
 
 }
