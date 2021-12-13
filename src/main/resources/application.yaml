@@ -1,6 +1,17 @@
+server:
+  port: 8082
+
+#spring:
+#  datasource:
+#    driverClassName: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:5432/system_city_transport_database
+#    username: postgres
+#    password: ZALMANz3plus
+
 spring:
   datasource:
-    driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/system_city_transport_database
+    url: jdbc:postgresql://127.0.0.1:5432/system_city_transport_database
     username: postgres
     password: ZALMANz3plus
+  jpa:
+    show-sql: off
