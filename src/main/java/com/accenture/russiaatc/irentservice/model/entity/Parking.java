@@ -31,8 +31,7 @@ public class Parking {
     @Column(name = "radius")
     private Integer radius;
 
-    @ManyToOne
-    @JoinColumn(name = "location_id")
+    @OneToOne
     private Location location;
 
 }

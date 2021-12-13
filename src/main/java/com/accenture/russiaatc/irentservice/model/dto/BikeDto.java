@@ -1,4 +1,7 @@
 package com.accenture.russiaatc.irentservice.model.dto;
 
-public class BikeDto {
+import lombok.Data;
+
+@Data
+public class BikeDto extends TransportDto{
 }

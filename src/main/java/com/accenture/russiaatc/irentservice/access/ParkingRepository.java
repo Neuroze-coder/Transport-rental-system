@@ -1,4 +1,7 @@
 package com.accenture.russiaatc.irentservice.access;
 
-public interface ParkingRepository {
+import com.accenture.russiaatc.irentservice.model.entity.Parking;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ParkingRepository extends JpaRepository<Parking, Integer>  {
 }
