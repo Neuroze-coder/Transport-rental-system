@@ -7,10 +7,12 @@ import com.accenture.russiaatc.irentservice.model.dto.UserLoginDto;
 import com.accenture.russiaatc.irentservice.model.entity.enums.TypeRole;
 import com.accenture.russiaatc.irentservice.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
