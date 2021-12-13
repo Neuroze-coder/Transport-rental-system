@@ -6,12 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Entity
 @Table(name = "rent")
@@ -32,9 +28,11 @@ public class Rent {
     @OneToOne
     private Parking finalLocation;
 
-    @ManyToMany (fetch = FetchType.EAGER)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Set<User> user;
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private Transport transport;
 
     @Column (name = "start_time")
     private LocalDateTime startTime;

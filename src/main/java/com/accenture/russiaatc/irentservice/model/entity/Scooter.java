@@ -1,6 +1,6 @@
 package com.accenture.russiaatc.irentservice.model.entity;
 
-import com.accenture.russiaatc.irentservice.model.entity.enums.TypeCondition;
+
 import lombok.*;
 
 import javax.persistence.*;
