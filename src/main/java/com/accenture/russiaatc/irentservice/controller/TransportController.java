@@ -1,7 +1,7 @@
 package com.accenture.russiaatc.irentservice.controller;
 
 import com.accenture.russiaatc.irentservice.model.dto.TransportDto;
-import com.accenture.russiaatc.irentservice.service.TransportService;
+import com.accenture.russiaatc.irentservice.service.transport.TransportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

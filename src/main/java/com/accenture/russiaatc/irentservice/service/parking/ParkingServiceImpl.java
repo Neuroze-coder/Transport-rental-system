@@ -1,4 +1,4 @@
-package com.accenture.russiaatc.irentservice.service;
+package com.accenture.russiaatc.irentservice.service.parking;
 
 import com.accenture.russiaatc.irentservice.access.ParkingRepository;
 import com.accenture.russiaatc.irentservice.model.converters.LocationMapper;

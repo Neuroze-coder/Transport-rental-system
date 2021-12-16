@@ -1,27 +1,33 @@
-package com.accenture.russiaatc.irentservice.service;
+package com.accenture.russiaatc.irentservice.service.user;
 
+import com.accenture.russiaatc.irentservice.error.BusinessRuntimeException;
+import com.accenture.russiaatc.irentservice.error.ErrorCodeEnum;
 import com.accenture.russiaatc.irentservice.access.UserRepository;
 import com.accenture.russiaatc.irentservice.model.converters.UserMapper;
 import com.accenture.russiaatc.irentservice.model.dto.UserDto;
 import com.accenture.russiaatc.irentservice.model.dto.UserLoginDto;
-import com.accenture.russiaatc.irentservice.model.entity.enums.TypeRole;
+import com.accenture.russiaatc.irentservice.model.entity.enums.RoleType;
 import com.accenture.russiaatc.irentservice.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     @Autowired
-    private UserMapper userMapper;
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
+    }
 
     @Override
-    public UserDto createUser(String login, String name, String surname, String password, TypeRole typeRole) {
+    public UserDto createUser(String login, String name, String surname, String password, RoleType typeRole) {
         User user = new User();
         user.setLogin(login);
         user.setName(name);
@@ -45,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto findById(Long id) {
-        return userMapper.userToUserDto(userRepository.findById(id));
+        return userMapper.userToUserDto(getById(id));
     }
 
     @Override
@@ -63,5 +69,23 @@ public class UserServiceImpl implements UserService {
                 .stream()
                 .map(userMapper::userToUserLoginDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public User getById(Long id) {
+        return userRepository.findById(id).orElseThrow(() ->
+                new BusinessRuntimeException(ErrorCodeEnum.USER_NO_FOUND, id));
+    }
+
+    @Override
+    public boolean canRent(User user) {
+        return user.getBalance().compareTo(BigDecimal.ZERO) != 0;
+    }
+
+
+    @Override
+    public boolean UserExistByLogin(String userName) {
+        User user = userRepository.findByLogin(userName);
+        return user != null;
     }
 }

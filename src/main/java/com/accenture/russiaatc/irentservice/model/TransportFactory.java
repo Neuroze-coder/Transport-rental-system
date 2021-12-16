@@ -5,11 +5,9 @@ import com.accenture.russiaatc.irentservice.model.dto.TransportDto;
 import com.accenture.russiaatc.irentservice.model.entity.Bike;
 import com.accenture.russiaatc.irentservice.model.entity.Scooter;
 import com.accenture.russiaatc.irentservice.model.entity.Transport;
-import com.accenture.russiaatc.irentservice.model.entity.enums.TypeCondition;
+import com.accenture.russiaatc.irentservice.model.entity.enums.ConditionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Locale;
 
 @Service
 public class TransportFactory {
@@ -41,7 +39,7 @@ public class TransportFactory {
         transport.setSerial(transportDto.getSerial());
         transport.setType(transportDto.getType());
         transport.setParking(parkingMapper.map(transportDto.getParkingDto()));
-        transport.setTypeCondition(TypeCondition.valueOf(transportDto.getCondition()));
+        transport.setTypeCondition(ConditionType.valueOf(transportDto.getCondition()));
         return transport;
     }
 }

@@ -1,4 +1,4 @@
-package com.accenture.russiaatc.irentservice.service;
+package com.accenture.russiaatc.irentservice.service.parking;
 
 import com.accenture.russiaatc.irentservice.model.dto.ParkingDto;
 import org.springframework.stereotype.Service;

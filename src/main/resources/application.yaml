@@ -1,13 +1,6 @@
 server:
   port: 8082
 
-#spring:
-#  datasource:
-#    driverClassName: org.postgresql.Driver
-#    url: jdbc:postgresql://localhost:5432/system_city_transport_database
-#    username: postgres
-#    password: ZALMANz3plus
-
 spring:
   datasource:
     url: jdbc:postgresql://127.0.0.1:5432/system_city_transport_database
@@ -15,3 +8,16 @@ spring:
     password: ZALMANz3plus
   jpa:
     show-sql: off
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com.ccenture.russiaatc.irentservice: DEBUG
+
+security:
+  secretString: verySecretCharacterSequence
+
+bot:
+  name: SperanskyIRentBot
+  token: 5094230120:AAEafTiK0yJ3BGoo9Hw7fa1zas1dyDTU8dA
+

@@ -2,7 +2,7 @@ package com.accenture.russiaatc.irentservice.model.entity;
 
 
 import com.accenture.russiaatc.irentservice.model.entity.enums.TransportState;
-import com.accenture.russiaatc.irentservice.model.entity.enums.TypeCondition;
+import com.accenture.russiaatc.irentservice.model.entity.enums.ConditionType;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,7 +25,7 @@ public class Transport {
 
     @Column (name = "condition")
     @Enumerated(EnumType.STRING)
-    private TypeCondition typeCondition;
+    private ConditionType typeCondition;
 
     @ManyToOne
     @JoinColumn (name = "type_id")

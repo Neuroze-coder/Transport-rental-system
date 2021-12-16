@@ -1,7 +1,7 @@
 package com.accenture.russiaatc.irentservice.model.entity;
 
 
-import com.accenture.russiaatc.irentservice.model.entity.enums.TypeRent;
+import com.accenture.russiaatc.irentservice.model.entity.enums.RentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,8 +18,8 @@ import java.time.LocalDateTime;
 public class Rent {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "seq_cust", sequenceName = "seq_cust", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @OneToOne
@@ -42,6 +42,6 @@ public class Rent {
 
     @Column (name = "status")
     @Enumerated(EnumType.STRING)
-    private TypeRent status;
+    private RentStatus status;
 
 }

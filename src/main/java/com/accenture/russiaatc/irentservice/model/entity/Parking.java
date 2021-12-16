@@ -1,6 +1,6 @@
 package com.accenture.russiaatc.irentservice.model.entity;
 
-import com.accenture.russiaatc.irentservice.model.entity.enums.TypeParking;
+import com.accenture.russiaatc.irentservice.model.entity.enums.ParkingType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +26,7 @@ public class Parking {
 
     @Column(name = "type_parking")
     @Enumerated(EnumType.STRING)
-    private TypeParking typeParking;
+    private ParkingType typeParking;
 
     @Column(name = "radius")
     private Integer radius;

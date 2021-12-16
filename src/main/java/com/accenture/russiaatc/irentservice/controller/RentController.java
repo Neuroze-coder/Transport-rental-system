@@ -1,23 +1,36 @@
 package com.accenture.russiaatc.irentservice.controller;
 
 import com.accenture.russiaatc.irentservice.model.dto.RentDto;
-import com.accenture.russiaatc.irentservice.service.RentServiceImpl;
+import com.accenture.russiaatc.irentservice.model.dto.UserLoginDto;
+import com.accenture.russiaatc.irentservice.service.rent.RentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping ("/rents")
+@RequestMapping("/rents")
 public class RentController {
 
+    private final RentServiceImpl rentService;
+
     @Autowired
-    RentServiceImpl rentService;
+    public RentController(RentServiceImpl rentService) {
+        this.rentService = rentService;
+    }
 
     @GetMapping("/{id}")
-    public RentDto getRentByUserId(@PathVariable Long id) {
-        RentDto r = rentService.findByUserId(id);
-        return r;
+    public List<RentDto> getRentByUserId(@PathVariable Long id) {
+        return (List<RentDto>) rentService.findByUserId(id);
+    }
+
+    @PostMapping("/create/{transportId}")
+    public RentDto createRent(@RequestBody UserLoginDto user, @PathVariable Long transportId) {
+        return rentService.createRent(user.getId(), transportId);
+    }
+
+    @PostMapping("/close/{rentId}")
+    public RentDto closeRent (@PathVariable Long rentId) {
+        return rentService.closeRent(rentId);
     }
 }

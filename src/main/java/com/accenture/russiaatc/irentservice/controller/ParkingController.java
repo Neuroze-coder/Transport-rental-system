@@ -1,7 +1,7 @@
 package com.accenture.russiaatc.irentservice.controller;
 
 import com.accenture.russiaatc.irentservice.model.dto.ParkingDto;
-import com.accenture.russiaatc.irentservice.service.ParkingServiceImpl;
+import com.accenture.russiaatc.irentservice.service.parking.ParkingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

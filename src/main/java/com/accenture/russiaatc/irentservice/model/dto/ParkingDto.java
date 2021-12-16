@@ -1,7 +1,7 @@
 package com.accenture.russiaatc.irentservice.model.dto;
 
 import com.accenture.russiaatc.irentservice.model.entity.Location;
-import com.accenture.russiaatc.irentservice.model.entity.enums.TypeParking;
+import com.accenture.russiaatc.irentservice.model.entity.enums.ParkingType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,5 +20,5 @@ public class ParkingDto {
 
     private Location location;
 
-    private TypeParking typeParking;
+    private ParkingType typeParking;
 }
