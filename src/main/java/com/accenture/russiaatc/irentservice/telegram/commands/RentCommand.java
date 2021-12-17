@@ -42,7 +42,7 @@ public class RentCommand extends BaseCommand {
             TransportShortDto tsd = transportService.findBySerial(strings[0]);
             RentDto createdRentDto = rentService.createRent(userDto.getId(), tsd.getId());
             if (createdRentDto != null) {
-                message = String.format("Поздравляю, вы арендовали %s, ваша аренда началась в %s", tsd.getSerial(), createdRentDto.getStartDateTime());
+                message = String.format("Вы арендовали %s, ваша аренда началась в %s (для закрытия аренды используйте команду /end + № поезки, номер поездки узнайте использовав команду /info)", tsd.getSerial(), createdRentDto.getStartDateTime());
             }
             else {
                 message = String.format("Простите, что-то пошло не так, арендовать %s не получилось", tsd.getSerial());

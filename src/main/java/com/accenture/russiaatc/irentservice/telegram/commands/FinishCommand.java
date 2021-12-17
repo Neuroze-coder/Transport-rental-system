@@ -36,7 +36,7 @@ public class FinishCommand extends BaseCommand {
 
             if (finishedRentDto != null) {
 
-                message = String.format("Вы успешно завершили поездку №: %d, стоимость %s", finishedRentDto.getId(), finishedRentDto.getTotalPrice());
+                message = String.format("Вы успешно завершили поездку №: %d, стоимость %s р.", finishedRentDto.getId(), finishedRentDto.getTotalPrice());
 
             }
             else {

@@ -12,6 +12,7 @@ public class CashServiceImpl implements CashService{
     @Override
     public BigDecimal getTotal(LocalDateTime start, LocalDateTime end, TransportType transportType) {
         BigDecimal moneyPerSecond;
+        BigDecimal initialCost = new BigDecimal("50");
 
         if (transportType.getType().equals("Bike")) {
             moneyPerSecond = new BigDecimal("0.05");
@@ -20,6 +21,6 @@ public class CashServiceImpl implements CashService{
         }
         BigDecimal second = new BigDecimal(start.until(end, ChronoUnit.SECONDS));
 
-        return second.multiply(moneyPerSecond);
+        return second.multiply(moneyPerSecond).multiply(initialCost);
     }
 }
