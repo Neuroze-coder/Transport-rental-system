@@ -27,7 +27,7 @@ public class FinishCommand extends BaseCommand {
 
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
-        log.info("Telegram FINISH command received");
+        log.info("Telegram END command received");
         try {
             String message;
             Long rentId = Long.parseLong(strings[0]);
