@@ -21,6 +21,6 @@ public class CashServiceImpl implements CashService{
         }
         BigDecimal second = new BigDecimal(start.until(end, ChronoUnit.SECONDS));
 
-        return second.multiply(moneyPerSecond).add(new BigDecimal("50"));
+        return second.multiply(moneyPerSecond).add(initialCost);
     }
 }
