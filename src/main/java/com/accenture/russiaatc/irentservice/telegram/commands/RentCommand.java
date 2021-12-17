@@ -41,9 +41,8 @@ public class RentCommand extends BaseCommand {
             UserDto userDto = userService.findByLogin(user.getUserName());
             TransportShortDto tsd = transportService.findBySerial(strings[0]);
             RentDto createdRentDto = rentService.createRent(userDto.getId(), tsd.getId());
+
             if (createdRentDto != null) {
-//                message = String.format("Вы арендовали %s, ваша аренда началась в %s (для закрытия аренды используйте команду " +
-//                        "/end + № поезки, номер поездки узнайте использовав команду /info)", tsd.getSerial(), createdRentDto.getStartDateTime());
                 message = String.format("Вы арендовали %s, ваша аренда началась в %s (для закрытия аренды используйте команду " +
                         "/end %s)", tsd.getSerial(), createdRentDto.getStartDateTime(), createdRentDto.getId());
             }
@@ -54,6 +53,7 @@ public class RentCommand extends BaseCommand {
         }
         catch (Exception ex) {
             log.error("Ошибка обработки команды rent", ex);
+
         }
     }
 }

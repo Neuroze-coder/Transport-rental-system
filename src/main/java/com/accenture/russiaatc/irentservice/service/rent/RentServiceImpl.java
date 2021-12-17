@@ -41,7 +41,7 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
-    public RentDto createRent(Long userId, Long transportId) {
+    public synchronized RentDto createRent(Long userId, Long transportId) {
         Rent createdRent;
 
         User user = userService.getById(userId);
@@ -73,7 +73,7 @@ public class RentServiceImpl implements RentService {
 
     @Override
     @Transactional
-    public RentDto closeRent (Long rentId) {
+    public synchronized RentDto closeRent (Long rentId) {
         Rent savedRent = null;
         Rent rent = getById(rentId);
         User user = rent.getUser();

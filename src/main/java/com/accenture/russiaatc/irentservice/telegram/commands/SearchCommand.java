@@ -34,7 +34,7 @@ public class SearchCommand extends BaseCommand {
 
             if (transportList != null && !transportList.isEmpty()) {
                 for (TransportShortDto tsd : transportList) {
-                    sb.append(String.format("Доступен %s '%s'\n(для создания аренты дайте команду /rent '%s')\n\n", tsd.getId(), tsd.getType(), tsd.getSerial()));
+                    sb.append(String.format("Доступен %s '%s'\n(для создания аренты дайте команду /rent %s)\n\n", tsd.getId(), tsd.getType(), tsd.getSerial()));
                 }
             }
             else {

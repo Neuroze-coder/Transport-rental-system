@@ -26,6 +26,6 @@ public interface UserService {
 
     boolean canRent(User user);
 
-    boolean UserExistByLogin(String userName);
+    boolean userExistByLogin(String userName);
 
 }

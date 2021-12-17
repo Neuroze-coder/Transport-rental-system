@@ -58,13 +58,17 @@ public class InfoCommand  extends BaseCommand  {
 
                 if (rents != null) {
                     for (RentDto t : rents) {
-                        sb.append(String.format("\n Поездка %s, ТС %s, начало %s, окончание %s, стоимость %s",
+
+                        sb.append(String.format("\n Поездка %s, ТС %s, начало %s, окончание %s, стоимость %s р.",
                                 t.getId(), t.getVehicle().getSerial(), t.getStartDateTime(), t.getEndDateTime(), t.getTotalPrice()));
                     }
+
                 }
             }
 
             utils.send(absSender, chat.getId(), sb.toString(), ParseMode.HTML, false);
+
+
         }
         catch (Exception ex) {
             log.error("Ошибка обработки команды info", ex);

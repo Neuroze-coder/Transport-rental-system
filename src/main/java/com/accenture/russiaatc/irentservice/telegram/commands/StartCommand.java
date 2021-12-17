@@ -32,13 +32,16 @@ public class StartCommand extends BaseCommand {
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
         log.info("Telegram START command received");
+        UserDto userDto;
         try {
             utils.send(absSender, chat.getId(), "Добро пожаловать.", ParseMode.HTML, false);
-            if (userService.UserExistByLogin(user.getUserName())) {
-                utils.send(absSender, chat.getId(), String.format("Здравствуйте %s", user.getUserName()), ParseMode.HTML, false);
+            userDto = userService.findByLogin(user.getUserName());
+            if (userService.userExistByLogin(user.getUserName())) {
+                utils.send(absSender, chat.getId(), String.format("Здравствуйте %s Ваш баланс: %s \n Для поиска свободных ТС введите /search \n Для просмотра истории поездок и баланса /info", user.getUserName(), userDto.getBalance()), ParseMode.HTML, false);
+
             }
             else {
-                UserDto userDto = userService.createUser(user.getUserName(), user.getFirstName(), user.getLastName(), "12345", RoleType.USER);
+                userDto = userService.createUser(user.getUserName(), user.getFirstName(), user.getLastName(), "12345", RoleType.USER);
                 userDto.setBalance(BigDecimal.valueOf(1000));
                 userDto = userService.saveUser(userDto);
                 utils.send(absSender,

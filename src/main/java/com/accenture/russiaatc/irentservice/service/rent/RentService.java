@@ -24,4 +24,5 @@ public interface RentService {
     RentDto closeRent(Long rentId);
 
     Rent getById(Long id);
+
 }
