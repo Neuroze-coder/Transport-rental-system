@@ -5,7 +5,6 @@ import com.accenture.russiaatc.irentservice.model.dto.TransportDto;
 import com.accenture.russiaatc.irentservice.model.entity.Bike;
 import com.accenture.russiaatc.irentservice.model.entity.Scooter;
 import com.accenture.russiaatc.irentservice.model.entity.Transport;
-import com.accenture.russiaatc.irentservice.model.entity.enums.ConditionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +21,10 @@ public class TransportFactory {
     public Transport createFromTransportDto (TransportDto transportDto) {
         Transport transport;
         switch (transportDto.getType().toString().toLowerCase()) {
-            case "bike":
+            case "BIKE":
                 transport = new Bike();
                 break;
-            case "scooter":
+            case "SCOOTER":
                 Scooter scooter = new Scooter();
                 scooter.setMaxSpeed(transportDto.getMaxSpeed());
                 scooter.setChargeLevel(transportDto.getChargeLevel());
@@ -36,10 +35,10 @@ public class TransportFactory {
         }
         transport.setId(transportDto.getId());
         transport.setState(transportDto.getState());
-        transport.setSerial(transportDto.getSerial());
+        transport.setSerial(transportDto.getRegNumber());
         transport.setType(transportDto.getType());
-        transport.setParking(parkingMapper.map(transportDto.getParkingDto()));
-        transport.setTypeCondition(ConditionType.valueOf(transportDto.getCondition()));
+        transport.setParking(parkingMapper.map(transportDto.getParking()));
+        transport.setCondition(transportDto.getCondition());
         return transport;
     }
 }

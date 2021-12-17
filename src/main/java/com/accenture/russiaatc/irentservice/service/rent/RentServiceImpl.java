@@ -9,12 +9,15 @@ import com.accenture.russiaatc.irentservice.model.entity.Rent;
 import com.accenture.russiaatc.irentservice.model.entity.Transport;
 import com.accenture.russiaatc.irentservice.model.entity.User;
 import com.accenture.russiaatc.irentservice.model.entity.enums.RentStatus;
+import com.accenture.russiaatc.irentservice.model.entity.enums.TransportState;
+import com.accenture.russiaatc.irentservice.service.cash.CashService;
 import com.accenture.russiaatc.irentservice.service.transport.TransportService;
 import com.accenture.russiaatc.irentservice.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,13 +29,15 @@ public class RentServiceImpl implements RentService {
     private final UserService userService;
     private final TransportService transportService;
     private final RentMapper rentMapper;
+    private final CashService cashService;
 
     @Autowired
-    public RentServiceImpl(RentRepository rentRepository, UserService userService, TransportService transportService, RentMapper rentMapper) {
+    public RentServiceImpl(RentRepository rentRepository, UserService userService, TransportService transportService, RentMapper rentMapper, CashService cashService) {
         this.rentRepository = rentRepository;
         this.userService = userService;
         this.transportService = transportService;
         this.rentMapper = rentMapper;
+        this.cashService = cashService;
     }
 
     @Override
@@ -67,17 +72,28 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
+    @Transactional
     public RentDto closeRent (Long rentId) {
-
+        Rent savedRent = null;
         Rent rent = getById(rentId);
+        User user = rent.getUser();
 
-        rent.setEndTime(LocalDateTime.now());
-        rent.setStatus(RentStatus.FINISHED);
-        Rent savedRent = rentRepository.save(rent);
+        Transport transport = rent.getTransport();
+        LocalDateTime nowTime = LocalDateTime.now();
+        BigDecimal total = cashService.getTotal(rent.getStartTime(), LocalDateTime.now(), rent.getTransport().getType());
+        int result = user.getBalance().compareTo(total);
 
-        transportService.freeTransport(rent.getTransport());
-
-        return rentMapper.map(savedRent);
+        if (result >= 0) {
+            rent.setFinalLocation(rent.getStartLocation());
+            rent.setEndTime(LocalDateTime.now());
+            rent.setTotalPrice(total);
+            rent.setStatus(RentStatus.FINISHED);
+            BigDecimal decreasedBalance = user.getBalance().subtract(total);
+            user.setBalance(decreasedBalance);
+            transport.setState(TransportState.FREE);
+            savedRent = rentRepository.save(rent);
+        }
+        return  rentMapper.map(savedRent);
     }
 
     @Override

@@ -13,6 +13,7 @@ public class TransportBikeDto {
     private String condition;
     private TransportType type;
     private ParkingDto parkingDto;
-    private String serial;
+    private String regNumber;
     private TransportState state;
 }
+

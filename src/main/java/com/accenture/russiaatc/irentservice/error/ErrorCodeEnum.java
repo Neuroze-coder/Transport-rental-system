@@ -12,7 +12,8 @@ public enum ErrorCodeEnum {
     USER_NO_FOUND("Пользователь не найден, id={0}", HttpStatus.NOT_FOUND),
     USER_CANT_RENT("Пользользователь не может создать аренду, id={0}"),
     TRANSPORT_NO_FOUND("Транспорт не найден, id={0}", HttpStatus.NOT_FOUND),
-    TRANSPORT_NOT_AVAILABLE("Транспорт не доступен, id={0}", HttpStatus.NOT_FOUND);
+    TRANSPORT_NOT_AVAILABLE("Транспорт не доступен, id={0}", HttpStatus.NOT_FOUND),
+    TELEGRAM_MESSAGE_SEND_ERROR("Некорректное сообщение в телеграм");
 
 
     private HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;

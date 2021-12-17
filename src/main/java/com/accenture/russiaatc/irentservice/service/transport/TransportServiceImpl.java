@@ -11,11 +11,13 @@ import com.accenture.russiaatc.irentservice.model.entity.Transport;
 import com.accenture.russiaatc.irentservice.model.entity.enums.TransportState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@Transactional
 public class TransportServiceImpl implements TransportService {
 
     private final TransportRepository repository;

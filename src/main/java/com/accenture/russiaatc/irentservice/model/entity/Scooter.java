@@ -9,15 +9,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+
 
 public class Scooter extends Transport{
 
-    @Column
-    private int maxSpeed;
-
-    @Column
-    private int chargeLevel;
+    private Integer maxSpeed;
+    private Integer chargeLevel;
 
 
 }

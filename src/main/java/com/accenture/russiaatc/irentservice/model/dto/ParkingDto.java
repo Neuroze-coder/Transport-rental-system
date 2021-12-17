@@ -16,9 +16,5 @@ public class ParkingDto {
 
     private String name;
 
-    private Integer radius;
-
-    private Location location;
-
-    private ParkingType typeParking;
+    private AreaDto area;
 }

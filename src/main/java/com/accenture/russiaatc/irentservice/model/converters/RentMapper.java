@@ -11,8 +11,14 @@ public interface RentMapper {
 
     Rent map (RentDto rentDto);
 
-//    @Mapping(source = "user", target = "userLoginDto")
-//    @Mapping(source = "transport", target = "transportShortDto")
+    @Mapping(source = "status", target = "status")
+    @Mapping(source = "startTime", target = "startDateTime")
+    @Mapping(source = "endTime", target = "endDateTime")
+    @Mapping(source = "transport", target = "vehicle")
+    @Mapping(source = "transport.serial", target = "vehicle.serial")
+    @Mapping(source = "startLocation", target = "startParking")
+    @Mapping(source = "finalLocation", target = "finishParking")
+
     RentDto map(Rent rent);
 
 }

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,10 +23,10 @@ public class Rent {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private Parking startLocation;
 
-    @OneToOne
+    @ManyToOne
     private Parking finalLocation;
 
     @ManyToOne
@@ -44,4 +45,19 @@ public class Rent {
     @Enumerated(EnumType.STRING)
     private RentStatus status;
 
+    private BigDecimal totalPrice;
+
+    @Override
+    public String toString() {
+        return "Rent{" +
+                "id=" + id +
+                ", startLocation=" + startLocation +
+                ", finalLocation=" + finalLocation +
+                ", user=" + user +
+                ", transport=" + transport +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", status=" + status +
+                '}';
+    }
 }

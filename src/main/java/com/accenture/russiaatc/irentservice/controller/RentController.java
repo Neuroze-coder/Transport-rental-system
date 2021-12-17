@@ -19,12 +19,13 @@ public class RentController {
         this.rentService = rentService;
     }
 
-    @GetMapping("/{id}")
-    public List<RentDto> getRentByUserId(@PathVariable Long id) {
-        return (List<RentDto>) rentService.findByUserId(id);
+    @GetMapping("/view")
+    public List<RentDto> getRentByUserId() {
+
+        return rentService.findAll();
     }
 
-    @PostMapping("/create/{transportId}")
+    @PostMapping("/{transportId}")
     public RentDto createRent(@RequestBody UserLoginDto user, @PathVariable Long transportId) {
         return rentService.createRent(user.getId(), transportId);
     }

@@ -5,11 +5,14 @@ import com.accenture.russiaatc.irentservice.model.entity.enums.TransportState;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.persistence.Column;
+
 @Data
 @Builder
 public class TransportShortDto {
     private Long id;
-    private TransportType type;
-    private String serial;
     private TransportState state;
+    @Column (name = "serial")
+    private String serial;
+    private TransportType type;
 }

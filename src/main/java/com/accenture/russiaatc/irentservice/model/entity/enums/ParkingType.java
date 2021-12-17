@@ -4,11 +4,6 @@ import lombok.Getter;
 
 @Getter
 public enum ParkingType {
-    FOR_BIKE("FOR BIKE"), FOR_SCOOTER ("FOR SCOOTER"), FOR_ALL ("FOR ALL");
+    FOR_BIKE, FOR_SCOOTER, FOR_ALL;
 
-    private final String name;
-
-    ParkingType(String name) {
-        this.name = name;
-    }
 }

@@ -25,9 +25,9 @@ public class UserController {
     }
 
     @GetMapping("/current")
-    public UIUserDto getCurrent () {
+    public UserLoginDto getCurrent () {
         CallContext callContext = SecurityContext.get();
-        return UIUserDto.builder().login(callContext.getLogin()).role(callContext.getRole()).balance(new BigDecimal(0)).build();
+        return UserLoginDto.builder().login(callContext.getLogin()).role(callContext.getRole()).balance(new BigDecimal(0)).build();
     }
 
     @GetMapping("/{id}")

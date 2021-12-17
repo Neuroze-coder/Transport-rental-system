@@ -13,10 +13,12 @@ public class TransportDto {
     private Long id;
     private String condition;
     private TransportType type;
-    private ParkingDto parkingDto;
-    private String serial;
+    private ParkingDto parking;
+    private String regNumber;
     private Integer chargeLevel;
     private Integer maxSpeed;
     private TransportState state;
+    private LocationDto geoPosition;
+
 
 }

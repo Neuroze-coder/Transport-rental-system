@@ -13,7 +13,6 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 
 public class Bike extends Transport {
 
