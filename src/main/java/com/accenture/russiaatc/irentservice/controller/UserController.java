@@ -1,6 +1,5 @@
 package com.accenture.russiaatc.irentservice.controller;
 
-import com.accenture.russiaatc.irentservice.model.dto.UIUserDto;
 import com.accenture.russiaatc.irentservice.model.dto.UserLoginDto;
 import com.accenture.russiaatc.irentservice.model.dto.UserDto;
 import com.accenture.russiaatc.irentservice.security.CallContext;

@@ -42,7 +42,7 @@ public class StartCommand extends BaseCommand {
             }
             else {
                 userDto = userService.createUser(user.getUserName(), user.getFirstName(), user.getLastName(), "12345", RoleType.USER);
-                userDto.setBalance(BigDecimal.valueOf(1000));
+                userDto.setBalance(new BigDecimal("10000"));
                 userDto = userService.saveUser(userDto);
                 utils.send(absSender,
                         chat.getId(),

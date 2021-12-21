@@ -32,7 +32,7 @@ public class TransportRepositoryTest {
     @Transactional
     void FindAllTransportTest() {
 
-        System.out.println("Trying to get all transport from DB:");
+        System.out.println("Получаем весь транспорт из БД");
         var l = transportRepo.findAll();
 
         for ( var t : l ) {
@@ -40,7 +40,7 @@ public class TransportRepositoryTest {
                 System.out.print("Велосипед: " + t);
             }
             else if (t instanceof Scooter) {
-                System.out.print("Электричка: " + t);
+                System.out.print("Электросамокат: " + t);
             }
             System.out.println();
         }
@@ -60,7 +60,7 @@ public class TransportRepositoryTest {
         TransportDto t1 = converter.map((Transport)b);
 
         Scooter e = new Scooter();
-        e.setSerial("Самокат-5");
+        e.setSerial("ЭСМ-25");
         e.setState(TransportState.FREE);
         e.setCondition("GOOD");
         e.setParking(parkingZone);
@@ -71,7 +71,7 @@ public class TransportRepositoryTest {
 
         TransportDto t2 = converter.map((Transport)e);
 
-        System.out.println("Trying to get all transport from DB:");
+        System.out.println("Получаем весь транспорт из БД:");
         l = transportRepo.findAll();
         for ( var t : l ) {
             if (t instanceof Bike) {

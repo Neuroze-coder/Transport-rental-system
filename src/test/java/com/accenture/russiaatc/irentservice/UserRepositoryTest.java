@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class UserRepositoryTest {
     @Test
     void ListUsersList(@Autowired UserRepository usersRepo) {
-        //список всех пользователей
+
         System.out.println("Trying to get all users from DB:");
         var l = usersRepo.findAll();
         for ( var t : l ) {
@@ -24,7 +24,7 @@ public class UserRepositoryTest {
 
     @Test
     void BigTest(@Autowired UserRepository repository) {
-        //список всех пользователей
+
         System.out.println("Trying to get all users from DB:");
         var l = repository.findAll();
         for ( var t : l ) {
@@ -33,8 +33,10 @@ public class UserRepositoryTest {
         System.out.println();
         System.out.println("Trying to add user");
         User user = new User();
-        user.setLogin("new@qwerty.com");
-        user.setPassword("111");
+        user.setLogin("123@mail.com");
+        user.setName("123name");
+        user.setSurname("123surname");
+        user.setPassword("123pass");
         user.setRole(RoleType.USER);
         user.setBalance(new BigDecimal("1000"));
         repository.save(user);
