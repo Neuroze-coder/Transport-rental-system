@@ -17,3 +17,7 @@ logging:
 security:
   secretString: verySecretCharacterSequence
 
+bot:
+  name: SperanskyIRentBot
+  token: 5094230120:AAEafTiK0yJ3BGoo9Hw7fa1zas1dyDTU8dA
+
